@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-demo
+spec:
+  containers:
+  - image: busybox
+    name: init-demo
+    command: ["sh", "-c", "3600"]
+  initContainers:
+  - image: busybox
+    name: init-container
+    command: ['sh', '-c', 'echo it is running']
+    cmd:
+       - echo "this is good"
+

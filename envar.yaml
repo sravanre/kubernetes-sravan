@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: envar
+  name: envar
+  namespace: ngx
+spec:
+  containers:
+  - image: busybox:latest
+    name: envar
+    env:
+       - name: PLANET
+         value: "blue"
+       - name: name
+         valueFrom:
+                 configMapKeyRef:
+                         name: gamedata
+                         key: name
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

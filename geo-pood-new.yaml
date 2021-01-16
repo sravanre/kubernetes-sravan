@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: geo-pood-new
+  name: geo-pood-new
+spec:
+  containers:
+  - image: nginx
+    name: geo-pood-new
+    env:
+            - name: LOCATIONION_I_USE
+              valueFrom:
+                      configMapKeyRef:
+                              name: geo1
+                              key: location
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

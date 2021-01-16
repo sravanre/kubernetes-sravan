@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: hello
+  name: hello-32
+spec:
+  containers:
+  - image: nginx
+    name: hello-32
+    command: ["sleep"]
+    args: ["10"]
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}

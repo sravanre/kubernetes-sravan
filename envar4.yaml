@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: envar4
+  name: envar4
+spec:
+  containers:
+  - image: nginx
+    name: envar4
+    env:
+       - name: COLOR
+         value: "blue"
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
