@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: specialnodepod
+  name: specialnodepod
+  namespace: new2
+spec:
+  containers:
+  - args:
+    - sleep
+    - "3600"
+    image: busybox
+    name: specialnodepod
+    resources: {}
+  nodeSelector: 
+    kind: special
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

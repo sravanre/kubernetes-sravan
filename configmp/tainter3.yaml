@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: tainter3
+  name: tainter7
+spec:
+  containers:
+  - image: nginx
+    name: tainter3
+    resources: {}
+  tolerations:
+      - effect: "NoSchedule"
+        key: "mysize"
+        operator: "Equal"
+        value: "small"
+  restartPolicy: Never
+status: {}

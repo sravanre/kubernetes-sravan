@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: nddd
+  name: specialpoddeploymnt
+  namespace: new2
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nddd
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nddd
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        args:
+           - sleep
+           - "3600"
+      nodeSelector:
+         kind: special
+
+status: {}

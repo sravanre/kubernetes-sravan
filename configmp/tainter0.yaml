@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: tainter1
+  name: tainter1
+spec:
+  replicas: 5
+  template:
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+      tolerations:
+      - effects: "NoSchedule"
+        key: "mysize"
+	operator: "Equal"
+        value: "large"

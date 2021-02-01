@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: host-pod1
+  name: host-pod1
+spec:
+  containers:
+  - image: nginx
+    name: host-pod1
+    volumeMounts:
+       - name: data1
+         mountPath: /tester-sravan
+  volumes:
+  - name: data1
+    hostPath: 
+       path: /var/tmp
+
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}

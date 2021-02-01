@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: secertpod
+  name: secertpod
+spec:
+  containers:
+  - image: nginx
+    name: secertpod
+    volumeMounts:
+    - name: testsecert
+      mountPath: /secretss
+  volumes:
+  - name: testsecert
+    secret:
+       secretName: mysecertenv  
+
+
+
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
