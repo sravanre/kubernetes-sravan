@@ -1,0 +1,40 @@
+
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+
+export KUBECONFIG=/etc/kubernetes/admin.conf
+
+kubeadm join 192.168.0.21:6443 --token 0t1lhf.j5nt6aadpapmanxh \
+    --discovery-token-ca-cert-hash sha256:aa457ad14460e9c6764e55c8dd5a9b3b4f1ba3980a0d13535368fb0699e97f2f
+
+
+
+
+
+kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kubeadm-kuberouter.yaml
+
+
+
+useradd sravan
+echo sravan | passwd sravan --stdin
+yum install sudo -y &> /dev/null
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+usermod -aG wheel sravan
+
+
+source <(kubectl completion bash)
+alias k='kubectl'
+alias kdr='kubectl --dry-run=client -o yaml'
+alias kg='kubectl get'
+alias ka='kubectl apply'
+alias kd='kubectl delete'
+
+alias kgp='kubectl get pods -o wide'
+alias kgn='kubectl get nodes -o wide'
+alias kc='kubectl create'
+alias kdd='kubectl describe'
+complete -F __start_kubectl k
