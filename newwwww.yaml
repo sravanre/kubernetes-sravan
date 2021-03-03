@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: newwwww
+  name: newwwww
+spec:
+  containers:
+  - image: busybox
+    name: newwwww
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  tolerations:
+  - key: "app"
+    operator: "Equal"
+    value: "blue" 
+    effect: "NoSchedule"
+status: {}

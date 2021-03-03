@@ -14,7 +14,7 @@ spec:
   - image: tomcat
     name: tomcat
   nodeSelector:
-     kind: node2
+    type: ssd
 
 
   dnsPolicy: ClusterFirst

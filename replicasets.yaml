@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:          # for the RC
+  name: myapp-rc
+  labels:
+    app: myapp
+    env: prod
+spec:          # spec for the RC   , for any k8 object the spec section defines whats inside of it
+  template:     ##   here the spec of RC defines that the it has the pods, pods template , so we create a pods template
+    metadata:     # for the pods
+      name: nginx-pod
+      labels:
+        run: myapp
+        kind: web
+    spec:     # spec for the pods
+      containers:
+        - name: nginx-pod
+          image: nginx
+        - name: redis
+          image: redis
+  replicas: 3
+  selector:
+          matchLabels:
+                  kind: web

@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginx-myap
+    app: myapp
+    type: frontend
+  name: nginx-myapp
+spec:
+  containers:
+  - image: nginx
+    name: myapp-container
+    resources:
+       requests:
+               memory: 300Mi
+               cpu: 40m
